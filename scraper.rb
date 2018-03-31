@@ -19,7 +19,8 @@ class Scraper
 			property_type = page.css("span._y8ard79")[1].text
 			bedrooms = page.css("span._y8ard79")[2].text
 			bathroom = page.css("span._y8ard79")[3].text
-			amenities = page.css("div._m7iebup")[2..7].text
+			amenities = page.css("div._m7iebup")[2..7].map { |link| link.text }
+
 			puts property_name
 			puts property_type
 			puts bedrooms
