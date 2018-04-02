@@ -12,14 +12,14 @@ PAGE_URLS =
 
 class Scraper
 
-	def self.noko
+	def self.scrape
 		PAGE_URLS.each do |url|
 			page = Nokogiri::HTML(open(url))  
 			property_name = page.css('h1')[1].text
 			property_type = page.css("span._y8ard79")[1].text
 			bedrooms = page.css("span._y8ard79")[2].text
 			bathroom = page.css("span._y8ard79")[3].text
-			amenities = page.css("div._m7iebup")[2..7].map { |link| link.text }
+			amenities = page.css("div._m7iebup")[2..7].map { |a| a.text }
 
 			puts property_name
 			puts property_type
@@ -30,4 +30,4 @@ class Scraper
 	end
 end
 
-Scraper.noko
+Scraper.scrape
